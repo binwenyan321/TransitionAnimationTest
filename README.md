@@ -50,7 +50,7 @@
 
    * push
 
-     ![截屏2021-09-26 下午2.09.58](/Users/shurui/Desktop/截屏2021-09-26 下午2.09.58.png)
+      ![截屏2021-09-26 下午2 09 58](https://user-images.githubusercontent.com/19942237/134801503-47275961-7dc5-4d67-b574-4c3d64444e4b.png)
 
      可以发现fromView、toView都是有值的，且fromView与fromVC的view一致，toView与toVC的view一致
 
@@ -60,13 +60,13 @@
 
    * present
 
-     ![截屏2021-09-26 下午2.24.21](/Users/shurui/Desktop/截屏2021-09-26 下午2.24.21.png)
+     ![截屏2021-09-26 下午2 24 21](https://user-images.githubusercontent.com/19942237/134801519-8d546ecf-fa10-441e-a3ed-f663336d83fd.png)
 
      fromView为nil
 
    * dismiss
 
-     ![截屏2021-09-26 下午2.26.06](/Users/shurui/Desktop/截屏2021-09-26 下午2.26.06.png)
+     ![截屏2021-09-26 下午2 26 06](https://user-images.githubusercontent.com/19942237/134801525-065397ec-a3c7-4642-b947-f1d44e09c748.png)
 
      toView为nil
 
