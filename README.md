@@ -112,8 +112,14 @@
 
    * push前
 
-     为转场到的控制器设置代理，未设置会执行系统转场动画
+     记录原代理对象
 
+     ```swift
+     (vc as? ViewControllerOne)?.navDelegate = self.navigationController?.delegate
+     ```
+   
+     为转场到的控制器设置代理，未设置会执行系统转场动画
+   
      ```swift
      self.navigationController?.delegate = vc as? UINavigationControllerDelegate
      self.navigationController?.pushViewController(vc, animated: true)
@@ -121,26 +127,26 @@
 
    * pop后
 
-     清空代理，否则会出现内存泄漏导致crash问题
-
-     研究发现过早清空会导致转场动画不生效，太晚清空会导致crash
-
-     网上查询到的资料都建议在viewDidDisappear进行清空，但实际验证发现此时**navigationController**已经为**nil**，无法设置代理，无效操作
-
+     还原代理，否则会出现内存泄漏导致crash问题
+   
+     研究发现过早还原会导致转场动画不生效，太晚还原会导致crash
+   
+     网上查询到的资料都建议在viewDidDisappear进行还原，但实际验证发现此时**navigationController**已经为**nil**，无法设置代理，无效操作
+   
      ```swift
      // 无效
      override func viewDidDisappear(_ animated: Bool) {
              super.viewDidDisappear(animated)
-             self.navigationController?.delegate = nil
+             self.navigationController?.delegate = self.navDelegate
          }
      ```
-
-     研究发现可以在**UINavigationControllerDelegate**的另外一个代理方法中执行清空操作
-
+   
+     研究发现可以在**UINavigationControllerDelegate**的另外一个代理方法中执行还原操作
+   
      ```swift
      /// 发生转场，新的控制器界面即将出现
          func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
-             // 返回到上级界面时才进行清空代理操作
+             // 返回到上级界面时才进行还原代理操作
              guard viewController != self else {
                  return
              }
@@ -149,25 +155,25 @@
                    else {
                  return
              }
-             // 置空代理
-             self.navigationController?.delegate = nil
+             // 还原代理
+             self.navigationController?.delegate = self.navDelegate
          }
      ```
-
+   
    * 当前界面继续进行转场
-
-     当前界面需要继续进行转场时，需要先置空代理，否则会出现转场异常，导致黑屏等问题
-
+   
+     当前界面需要继续进行转场时，需要先还原代理，否则会出现转场异常，导致黑屏等问题
+   
      ```swift
      @objc func jumpVC() {
          let vc = ViewController()
-         self.navigationController?.delegate = nil  // 跳转之前需要先置空代理
+         self.navigationController?.delegate = self.navDelegate  // 跳转之前需要先还原代理
          self.navigationController?.pushViewController(vc, animated: true)
      }
      ```
-
+   
    * 从别的界面返回到当前界面，需要重设代理为自身，不然返回时会执行系统转场动画
-
+   
      ```swift
      override func viewWillAppear(_ animated: Bool) {
          super.viewWillAppear(animated)

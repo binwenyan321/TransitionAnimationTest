@@ -10,6 +10,8 @@ import UIKit
 class ViewControllerThree: UIViewController {
     
     // MARK: - Public Property
+    var navDelegate: UINavigationControllerDelegate?
+    
     var imageView: UIImageView = UIImageView()
     
     lazy var btn: UIButton = {
@@ -61,7 +63,7 @@ class ViewControllerThree: UIViewController {
               else {
             return
         }
-        self.navigationController?.delegate = nil
+        self.navigationController?.delegate = self.navDelegate
     }
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
@@ -81,7 +83,7 @@ class ViewControllerThree: UIViewController {
     // MARK: IBAction
     @objc func jumpVC() {
         let vc = ViewController()
-        self.navigationController?.delegate = nil  // 跳转之前需要先置空代理
+        self.navigationController?.delegate = self.navDelegate  // 跳转之前需要先置空代理
         self.navigationController?.pushViewController(vc, animated: true)
     }
 
@@ -107,7 +109,7 @@ extension ViewControllerThree: UINavigationControllerDelegate {
             self.transitionAnimation.type = .pop
             
             // 如果返回不需要自定义转场动画，置空代理，返回nil即可
-//            self.navigationController?.delegate = nil
+//            self.navigationController?.delegate = self.navDelegate
 //            return nil
         }
         return self.transitionAnimation
@@ -124,7 +126,7 @@ extension ViewControllerThree: UINavigationControllerDelegate {
             return
         }
         // 返回到上级界面时，置空代理
-        self.navigationController?.delegate = nil
+        self.navigationController?.delegate = self.navDelegate
     }
     
     func navigationController(_ navigationController: UINavigationController, interactionControllerFor animationController: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {

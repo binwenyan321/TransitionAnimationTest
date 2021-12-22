@@ -24,6 +24,12 @@
 		7BA7773826F1D30400E1B1DC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7BA7773626F1D30400E1B1DC /* LaunchScreen.storyboard */; };
 		7BA7774226F1D3DD00E1B1DC /* TransitionOne.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BA7774126F1D3DD00E1B1DC /* TransitionOne.swift */; };
 		7BA7774626F1D42B00E1B1DC /* ViewControllerOne.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BA7774526F1D42B00E1B1DC /* ViewControllerOne.swift */; };
+		7BC55D292772FD6D00D6763E /* ViewControllerFive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BC55D282772FD6D00D6763E /* ViewControllerFive.swift */; };
+		7BC55D2C2772FEFF00D6763E /* WBUINavigationController+AnimationPush.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BC55D2B2772FEFF00D6763E /* WBUINavigationController+AnimationPush.swift */; };
+		7BC55D2E2773050C00D6763E /* WBVCAnimationPushDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BC55D2D2773050C00D6763E /* WBVCAnimationPushDelegate.swift */; };
+		7BC55D3027730AD300D6763E /* WBAnimationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BC55D2F27730AD300D6763E /* WBAnimationViewController.swift */; };
+		7BC55D32277318B700D6763E /* WBTransitionMove.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BC55D31277318B700D6763E /* WBTransitionMove.swift */; };
+		7BC55D3427731B1300D6763E /* WBTransitionOpenOrCloseDoor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BC55D3327731B1300D6763E /* WBTransitionOpenOrCloseDoor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +52,12 @@
 		7BA7773926F1D30400E1B1DC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7BA7774126F1D3DD00E1B1DC /* TransitionOne.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionOne.swift; sourceTree = "<group>"; };
 		7BA7774526F1D42B00E1B1DC /* ViewControllerOne.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerOne.swift; sourceTree = "<group>"; };
+		7BC55D282772FD6D00D6763E /* ViewControllerFive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerFive.swift; sourceTree = "<group>"; };
+		7BC55D2B2772FEFF00D6763E /* WBUINavigationController+AnimationPush.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WBUINavigationController+AnimationPush.swift"; sourceTree = "<group>"; };
+		7BC55D2D2773050C00D6763E /* WBVCAnimationPushDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WBVCAnimationPushDelegate.swift; sourceTree = "<group>"; };
+		7BC55D2F27730AD300D6763E /* WBAnimationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WBAnimationViewController.swift; sourceTree = "<group>"; };
+		7BC55D31277318B700D6763E /* WBTransitionMove.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WBTransitionMove.swift; sourceTree = "<group>"; };
+		7BC55D3327731B1300D6763E /* WBTransitionOpenOrCloseDoor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WBTransitionOpenOrCloseDoor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +127,8 @@
 				7B1ABC2026FC65BC00CD8371 /* TransitionTwo */,
 				7B1ABC2926FC948C00CD8371 /* TransitionThree */,
 				7B1ABC2A26FC949600CD8371 /* TransitionFour */,
+				7BC55D272772FD3D00D6763E /* TransitionFive */,
+				7BC55D2A2772FE1000D6763E /* Helper */,
 				7BA7773126F1D30200E1B1DC /* Main.storyboard */,
 				7BA7773426F1D30400E1B1DC /* Assets.xcassets */,
 				7BA7773626F1D30400E1B1DC /* LaunchScreen.storyboard */,
@@ -130,6 +144,26 @@
 				7BA7774126F1D3DD00E1B1DC /* TransitionOne.swift */,
 			);
 			path = TransitionOne;
+			sourceTree = "<group>";
+		};
+		7BC55D272772FD3D00D6763E /* TransitionFive */ = {
+			isa = PBXGroup;
+			children = (
+				7BC55D282772FD6D00D6763E /* ViewControllerFive.swift */,
+			);
+			path = TransitionFive;
+			sourceTree = "<group>";
+		};
+		7BC55D2A2772FE1000D6763E /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				7BC55D2F27730AD300D6763E /* WBAnimationViewController.swift */,
+				7BC55D2B2772FEFF00D6763E /* WBUINavigationController+AnimationPush.swift */,
+				7BC55D2D2773050C00D6763E /* WBVCAnimationPushDelegate.swift */,
+				7BC55D31277318B700D6763E /* WBTransitionMove.swift */,
+				7BC55D3327731B1300D6763E /* WBTransitionOpenOrCloseDoor.swift */,
+			);
+			path = Helper;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -204,18 +238,24 @@
 			files = (
 				7BA7773026F1D30200E1B1DC /* ViewController.swift in Sources */,
 				7BA7774626F1D42B00E1B1DC /* ViewControllerOne.swift in Sources */,
+				7BC55D2C2772FEFF00D6763E /* WBUINavigationController+AnimationPush.swift in Sources */,
 				7B1ABC3626FC94E400CD8371 /* TransitionFour.swift in Sources */,
 				7B1ABC3026FC94BC00CD8371 /* ViewControllerFour.swift in Sources */,
 				7B1ABC3926FC977400CD8371 /* TransitionInteractiveThree.swift in Sources */,
 				7B1ABC2226FC65EA00CD8371 /* TransitionTwo.swift in Sources */,
 				7B1ABC3326FC94D900CD8371 /* TransitionThree.swift in Sources */,
+				7BC55D3027730AD300D6763E /* WBAnimationViewController.swift in Sources */,
 				7B1ABC2626FC660000CD8371 /* ViewControllerTwo.swift in Sources */,
 				7B22DC1A26F5E5AB009A5BFD /* TransitionAnimationHeader.swift in Sources */,
+				7BC55D32277318B700D6763E /* WBTransitionMove.swift in Sources */,
 				7BA7772C26F1D30200E1B1DC /* AppDelegate.swift in Sources */,
 				7BA7772E26F1D30200E1B1DC /* SceneDelegate.swift in Sources */,
 				7B1ABC3C26FDAF0800CD8371 /* TransitionInteractiveFour.swift in Sources */,
+				7BC55D3427731B1300D6763E /* WBTransitionOpenOrCloseDoor.swift in Sources */,
 				7B1ABC2C26FC94B000CD8371 /* ViewControllerThree.swift in Sources */,
+				7BC55D292772FD6D00D6763E /* ViewControllerFive.swift in Sources */,
 				7BA7774226F1D3DD00E1B1DC /* TransitionOne.swift in Sources */,
+				7BC55D2E2773050C00D6763E /* WBVCAnimationPushDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

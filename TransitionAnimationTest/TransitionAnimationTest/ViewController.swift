@@ -15,9 +15,9 @@ class ViewController: UIViewController {
     
     var selectCell: UITableViewCell?
     
-    fileprivate let dataSource: [String] = ["push/pop转场", "present/dismiss转场", "push/pop转场 带手势效果", "present/dismiss转场 带手势效果"]
+    fileprivate let dataSource: [String] = ["push/pop转场", "present/dismiss转场", "push/pop转场 带手势效果", "present/dismiss转场 带手势效果", "push/pop转场 工具类实现"]
     
-    fileprivate let vcArr: [UIViewController] = [ViewControllerOne(), ViewControllerTwo(), ViewControllerThree(), ViewControllerFour()]
+    fileprivate let vcArr: [UIViewController] = [ViewControllerOne(), ViewControllerTwo(), ViewControllerThree(), ViewControllerFour(), ViewControllerFive()]
     
     fileprivate lazy var tableview: UITableView = {
         let tableView = UITableView(frame: CGRect(x: 0, y: 100, width: self.view.frame.size.width, height: Metric.cellHeight*CGFloat(dataSource.count)), style: .plain)
@@ -46,15 +46,21 @@ extension ViewController: UITableViewDelegate {
         self.selectCell = tableview.cellForRow(at: indexPath)
         switch indexPath.row {
         case 0:
+            (vc as? ViewControllerOne)?.navDelegate = self.navigationController?.delegate
             self.navigationController?.delegate = vc as? UINavigationControllerDelegate
             self.navigationController?.pushViewController(vc, animated: true)
         case 1:
             self.present(vc, animated: true, completion: nil)
         case 2:
+            (vc as? ViewControllerThree)?.navDelegate = self.navigationController?.delegate
             self.navigationController?.delegate = vc as? UINavigationControllerDelegate
             self.navigationController?.pushViewController(vc, animated: true)
         case 3:
             self.present(vc, animated: true, completion: nil)
+        case 4:
+            self.animationView = self.selectCell?.imageView
+            vc.animationView = (vc as? ViewControllerFive)?.imageView
+            self.navigationController?.animationPushViewController(vc: vc, animationType: .openOrCloseDoor)
         default:
             let vc = ViewController()
             self.navigationController?.pushViewController(vc, animated: true)
